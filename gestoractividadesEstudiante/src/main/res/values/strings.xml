@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">GestorActividadesEstudiante</string>
+    <string name="app_name">Gestor de Actividades de Estudiantes</string>
+    <string name="btn_resumen">Resumen</string>
+    <string name="btn_asistencia">Pasar asistencia</string>
+    <string name="btn_listar_est">Listar Estudiante</string>
+    <string name="btn_crear_est">Registrar Estudiante</string>
+    <string name="lbl_listado_est">Listado de Estudiante</string>
+    <string name="select_lbl_grupo">Seleccione el grupo</string>
 </resources>

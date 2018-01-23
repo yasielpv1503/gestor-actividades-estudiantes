@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:paddingLeft="20dp"
+android:paddingRight="20dp"
+tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.CrearEstudianteActivity">
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:layout_marginTop="25dp"
+    android:text="REGISTRAR ESTUDIANTE"/>
+<EditText
+    android:id="@+id/user_est"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:hint="Usuario" />
+
+<EditText
+    android:id="@+id/name_est"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:hint="Nombre" />
+
+    <Spinner
+        android:id="@+id/group_est"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+<LinearLayout
+    android:layout_marginTop="25dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+    >
+    <Button
+
+        android:id="@+id/btnCrearYListar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        />
+    <Button
+
+        android:id="@+id/btnCrearYCrear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar y Continuar"
+        />
+
+    <Button
+        android:id="@+id/atrasBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        />
+</LinearLayout>
+</LinearLayout>
