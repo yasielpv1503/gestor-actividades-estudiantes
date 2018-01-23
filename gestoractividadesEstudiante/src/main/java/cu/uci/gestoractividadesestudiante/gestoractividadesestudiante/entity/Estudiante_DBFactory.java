@@ -51,7 +51,7 @@ public class Estudiante_DBFactory extends SQLiteOpenHelper {
         Cursor cur = sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" ORDER BY "+ESTUDIANTE_NOMBRE, null);
 
         LinkedList<Estudiante> list = new LinkedList<>();
-        if (cur.moveToNext()) {
+        while (cur.moveToNext()) {
             Estudiante obj = new Estudiante(cur.getString(0), cur.getString(1), cur.getString(2), cur.getString(3));
             list.add(obj);
         }
@@ -69,7 +69,7 @@ public class Estudiante_DBFactory extends SQLiteOpenHelper {
         Cursor cur = sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ESTUDIANTE_GRUPO+" = '"+grupo+"' ORDER BY "+ESTUDIANTE_NOMBRE, null);
 
         LinkedList<Estudiante> list = new LinkedList<>();
-        if (cur.moveToNext()) {
+        while (cur.moveToNext()) {
             Estudiante obj = new Estudiante(cur.getString(0), cur.getString(1), cur.getString(2), cur.getString(3));
             list.add(obj);
         }
@@ -91,6 +91,11 @@ public class Estudiante_DBFactory extends SQLiteOpenHelper {
         long id = db.insert(TABLE_NAME, null, row);
         db.close();
         return id;
+    }
+
+    public boolean delete(String id)
+    {   SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, ESTUDIANTE_ID + "=" + id, null) > 0;
     }
 
 

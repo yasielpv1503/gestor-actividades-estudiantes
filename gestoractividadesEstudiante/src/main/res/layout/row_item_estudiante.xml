@@ -30,7 +30,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@mipmap/add" />
+        android:src="@mipmap/trash" />
 
 
     <LinearLayout

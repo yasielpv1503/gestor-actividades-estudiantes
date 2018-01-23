@@ -1,6 +1,8 @@
 package cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +15,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.ListarEstudianteActivity;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.R;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Estudiante;
+import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Estudiante_DBFactory;
 
 /**
  * Created by tatos on 23/01/18.
@@ -43,14 +47,36 @@ public class CustomAdapter extends ArrayAdapter<Estudiante> implements View.OnCl
     @Override
     public void onClick(View v) {
 
-        int position=(Integer) v.getTag();
+        final int position=(Integer) v.getTag();
         Object object= getItem(position);
-        Estudiante dataModel=(Estudiante) object;
+        final Estudiante dataModel=(Estudiante) object;
 
         switch (v.getId())
         {
             case R.id.item_info:
-                Toast.makeText(mContext, "Release date " +dataModel.getNombre(), Toast.LENGTH_SHORT).show();
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                Estudiante_DBFactory est = new Estudiante_DBFactory(mContext);
+                                String g = dataModel.getGrupo();
+                                est.delete(dataModel.getId());
+                                dataSet.remove(position);
+                                notifyDataSetChanged();
+                                notifyDataSetInvalidated();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("Estas seguro que quieres eliminar el estudiante?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
                 break;
         }
     }

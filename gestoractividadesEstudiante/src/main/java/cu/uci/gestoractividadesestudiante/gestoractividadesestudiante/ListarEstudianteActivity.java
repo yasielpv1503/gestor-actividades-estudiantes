@@ -31,11 +31,12 @@ public class ListarEstudianteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_estudiante);
         loadGrupos();
+        eventCreateEst();
 
     }
 
     public void eventCreateEst(){
-        btnAddEstudiante = (Button) findViewById(R.id.btnAddEstudiante);
+        btnAddEstudiante = (Button) findViewById(R.id.btnCrear);
         btnAddEstudiante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,14 +46,17 @@ public class ListarEstudianteActivity extends AppCompatActivity {
         });
     }
 
-    void loadList(String grupo){
+    public void loadList(String grupo){
         listView=(ListView)findViewById(R.id.list);
         dataModels= new ArrayList<>();
         Estudiante_DBFactory est = new Estudiante_DBFactory(getBaseContext());
         List<Estudiante> estList =  est.getAllByGroup(grupo);
+        Toast.makeText(ListarEstudianteActivity.this,"Cant"+String.valueOf(estList.size()),Toast.LENGTH_SHORT).show();
+
         for (int i = 0; i < estList.size() ; i++)
             dataModels.add(estList.get(i));
-        adapter= new CustomAdapter(dataModels,getApplicationContext());
+
+        adapter= new CustomAdapter(dataModels,ListarEstudianteActivity.this);
 
         listView.setAdapter(adapter);
 
@@ -87,7 +91,6 @@ public class ListarEstudianteActivity extends AppCompatActivity {
                 GrupoManager mg=new GrupoManager();
                 String grupo = mg.getList().get(position);
                 loadList(grupo);
-
             }
 
             @Override

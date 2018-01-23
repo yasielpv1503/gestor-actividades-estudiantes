@@ -38,7 +38,7 @@ public class CrearEstudianteActivity extends AppCompatActivity {
         atrasBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                Intent intent = new Intent(getBaseContext(), ListarEstudianteActivity.class);
                 startActivity(intent);
             }
         });
@@ -54,20 +54,24 @@ public class CrearEstudianteActivity extends AppCompatActivity {
                 TextView name = (TextView) findViewById(R.id.name_est);
                 Spinner grupo = (Spinner) findViewById(R.id.group_est);
                 boolean error = false;
-                if(user.getText().toString().trim() == "" || name.getText().toString().trim() == "" || grupo.getSelectedItem().toString().trim() == ""){
+
+                if(user.getText().toString().trim().isEmpty() || name.getText().toString().trim().isEmpty()|| grupo.getSelectedItem().toString().trim().isEmpty()){
                     Toast.makeText(CrearEstudianteActivity.this,"Los campos no pueden estar en blanco.",Toast.LENGTH_SHORT).show();
                     error=true;
                 }
 
+
                 Estudiante_DBFactory db_Est = new Estudiante_DBFactory(getBaseContext());
                 List<Estudiante> list = db_Est.getAll();
 
+
+
                 for (int i=0;i<list.size();i++){
-                    if(list.get(i).getUsuario() == user.getText().toString()){
+                    if(list.get(i).getUsuario().equals(user.getText().toString().trim())){
                         Toast.makeText(CrearEstudianteActivity.this,"Ya existe un estudiante con este usuario",Toast.LENGTH_SHORT).show();
                         error=true;
                     }
-                    if(list.get(i).getNombre() == name.getText().toString()){
+                    if(list.get(i).getNombre().equals(name.getText().toString().trim())){
                         Toast.makeText(CrearEstudianteActivity.this,"Ya existe un estudiante con este nombre",Toast.LENGTH_SHORT).show();
                         error=true;
                     }
@@ -75,11 +79,11 @@ public class CrearEstudianteActivity extends AppCompatActivity {
 
                 if(!error){
                     Estudiante e = new Estudiante("",user.getText().toString(),name.getText().toString(),grupo.getSelectedItem().toString());
-                    db_Est.create(e);
-                    Toast.makeText(CrearEstudianteActivity.this,"Estudiante registrado con exito.",Toast.LENGTH_SHORT).show();
+                    long id = db_Est.create(e);
+                    Toast.makeText(CrearEstudianteActivity.this,"Estudiante registrado con exito."+String.valueOf(id),Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(getBaseContext(), CrearEstudianteActivity.class);
-                    startActivity(intent);
+                    //Intent intent = new Intent(getBaseContext(), CrearEstudianteActivity.class);
+                    //startActivity(intent);
                 }
                 }
         });
@@ -96,23 +100,23 @@ public class CrearEstudianteActivity extends AppCompatActivity {
                 TextView name = (TextView) findViewById(R.id.name_est);
                 Spinner grupo = (Spinner) findViewById(R.id.group_est);
                 boolean error = false;
-                if(user.getText().toString().trim() == "" || name.getText().toString().trim() == "" || grupo.getSelectedItem().toString().trim() == ""){
+                if(user.getText().toString().trim().isEmpty() || name.getText().toString().trim().isEmpty()|| grupo.getSelectedItem().toString().trim().isEmpty()){
                     Toast.makeText(CrearEstudianteActivity.this,"Los campos no pueden estar en blanco.",Toast.LENGTH_SHORT).show();
                     error=true;
                 }
-
 
 
                 Estudiante_DBFactory db_Est = new Estudiante_DBFactory(getBaseContext());
                 List<Estudiante> list = db_Est.getAll();
 
 
+
                 for (int i=0;i<list.size();i++){
-                    if(list.get(i).getUsuario() == user.getText().toString()){
+                    if(list.get(i).getUsuario().equals(user.getText().toString().trim())){
                         Toast.makeText(CrearEstudianteActivity.this,"Ya existe un estudiante con este usuario",Toast.LENGTH_SHORT).show();
                         error=true;
                     }
-                    if(list.get(i).getNombre() == name.getText().toString()){
+                    if(list.get(i).getNombre().equals(name.getText().toString().trim())){
                         Toast.makeText(CrearEstudianteActivity.this,"Ya existe un estudiante con este nombre",Toast.LENGTH_SHORT).show();
                         error=true;
                     }
