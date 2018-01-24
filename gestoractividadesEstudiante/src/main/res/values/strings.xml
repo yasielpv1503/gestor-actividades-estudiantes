@@ -8,4 +8,5 @@
     <string name="lbl_listado_act">Listado de Actividades</string>
     <string name="select_lbl_grupo">Seleccione el grupo</string>
     <string name="btn_listar_act">Gestionar actividad</string>
+    <string name="fld_Descripcion">Descripcion</string>
 </resources>

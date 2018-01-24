@@ -29,6 +29,7 @@ public class Estudiante_DBFactory extends SQLiteOpenHelper {
 
     public Estudiante_DBFactory(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        this.onCreate(this.getWritableDatabase());
 
     }
     @Override

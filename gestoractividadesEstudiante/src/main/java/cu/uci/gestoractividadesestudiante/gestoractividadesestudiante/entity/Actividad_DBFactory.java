@@ -29,7 +29,9 @@ public class Actividad_DBFactory extends SQLiteOpenHelper {
 
     public Actividad_DBFactory(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        this.onCreate(this.getWritableDatabase());
     }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE);
