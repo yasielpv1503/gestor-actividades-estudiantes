@@ -22,6 +22,7 @@ import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Est
 
 public class ListarEstudianteActivity extends AppCompatActivity {
     Spinner grupos;
+    String selectedGroup;
     Button btnAddEstudiante;
     Button btnAtras;
     ArrayList<Estudiante> dataModels;
@@ -31,9 +32,13 @@ public class ListarEstudianteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_estudiante);
+        this.selectedGroup=getIntent().getStringExtra("groupSelected");
         loadGrupos();
         btnAddEstudiante();
         btnAtras();
+
+
+
     }
 
     public void btnAddEstudiante(){
@@ -97,6 +102,9 @@ public class ListarEstudianteActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         grupos.setAdapter(dataAdapter);
+        if(!this.selectedGroup.isEmpty())
+            grupos.setSelection(dataAdapter.getPosition(this.selectedGroup));
+
         grupos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {

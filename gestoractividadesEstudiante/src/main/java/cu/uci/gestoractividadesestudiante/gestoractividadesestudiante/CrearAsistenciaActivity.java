@@ -1,11 +1,13 @@
 package cu.uci.gestoractividadesestudiante.gestoractividadesestudiante;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -23,13 +25,26 @@ import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Est
 public class CrearAsistenciaActivity extends AppCompatActivity {
     Spinner grupos,actividades;
     ListView listView;
+    Button btnAtras;
     ArrayList<Estudiante> dataModels;
     private static AsistenciaAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_asistencia);
-        loadGrupos();loadActivities();
+        loadGrupos();loadActivities();eventAtras();
+    }
+    public void eventAtras(){
+        btnAtras = (Button) findViewById(R.id.btnAtras);
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.putExtra("groupSelected",  "");
+
+                startActivity(intent);
+            }
+        });
     }
 
     public void loadGrupos() {

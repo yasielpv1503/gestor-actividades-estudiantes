@@ -22,7 +22,8 @@
         <activity android:name=".ListarEstudianteActivity" />
         <activity android:name=".ListarActividadActivity" />
         <activity android:name=".CrearActividadActivity" />
-        <activity android:name=".CrearAsistenciaActivity"></activity>
+        <activity android:name=".CrearAsistenciaActivity" />
+        <activity android:name=".MostrarActividadesPorEstudianteActivity"></activity>
     </application>
 
 </manifest>

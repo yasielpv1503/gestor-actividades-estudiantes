@@ -15,7 +15,7 @@
 
 
     <TextView
-        android:id="@+id/usuario"
+        android:id="@+id/fecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
@@ -24,15 +24,18 @@
         android:textColor="@android:color/black" />
 
     <Switch
-        android:id="@+id/presente"
+        android:id="@+id/item_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:textOff="Ausente"
-        android:textOn="Presente"
-         />
+        android:textOff="AUSENTE"
+        android:textOn="PRESENTE"
+        android:clickable="false"
+
+
+          />
 
 
 

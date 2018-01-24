@@ -39,6 +39,7 @@ public class CrearEstudianteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), ListarEstudianteActivity.class);
+                intent.putExtra("groupSelected", "");
                 startActivity(intent);
             }
         });

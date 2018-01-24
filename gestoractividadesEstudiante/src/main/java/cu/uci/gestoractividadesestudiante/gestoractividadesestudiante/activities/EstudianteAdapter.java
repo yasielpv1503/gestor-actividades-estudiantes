@@ -3,6 +3,7 @@ package cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.activitie
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.ListarActividadActivity;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.ListarEstudianteActivity;
+import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.MostrarActividadesPorEstudianteActivity;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.R;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Estudiante;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Estudiante_DBFactory;
@@ -35,6 +38,7 @@ public class EstudianteAdapter extends ArrayAdapter<Estudiante> implements View.
         TextView txtGrupo;
         TextView txtUser;
         ImageView info;
+        ImageView item_act;
     }
 
     public EstudianteAdapter(ArrayList<Estudiante> data, Context context) {
@@ -78,6 +82,14 @@ public class EstudianteAdapter extends ArrayAdapter<Estudiante> implements View.
                 builder.setMessage("Estas seguro que quieres eliminar el estudiante?").setPositiveButton("Yes", dialogClickListener)
                         .setNegativeButton("No", dialogClickListener).show();
                 break;
+            case R.id.item_act:
+                Toast.makeText(mContext,"asdfsf",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, MostrarActividadesPorEstudianteActivity.class);
+                intent.putExtra("ID_ESTUDIANTE", dataModel.getId());
+                mContext.startActivity(intent);
+
+                break;
+
         }
     }
 
@@ -101,6 +113,7 @@ public class EstudianteAdapter extends ArrayAdapter<Estudiante> implements View.
             viewHolder.txtGrupo = (TextView) convertView.findViewById(R.id.grupo);
             viewHolder.txtUser = (TextView) convertView.findViewById(R.id.user);
             viewHolder.info = (ImageView) convertView.findViewById(R.id.item_info);
+            viewHolder.item_act = (ImageView) convertView.findViewById(R.id.item_act);
 
             result=convertView;
 
@@ -119,6 +132,8 @@ public class EstudianteAdapter extends ArrayAdapter<Estudiante> implements View.
         viewHolder.txtUser.setText(dataModel.getUsuario());
         viewHolder.info.setOnClickListener(this);
         viewHolder.info.setTag(position);
+        viewHolder.item_act.setOnClickListener(this);
+        viewHolder.item_act.setTag(position);
         // Return the completed view to render on screen
         return convertView;
     }
