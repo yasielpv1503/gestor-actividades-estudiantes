@@ -83,7 +83,7 @@ public class EstudianteAdapter extends ArrayAdapter<Estudiante> implements View.
                         .setNegativeButton("No", dialogClickListener).show();
                 break;
             case R.id.item_act:
-                Toast.makeText(mContext,"asdfsf",Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(mContext, MostrarActividadesPorEstudianteActivity.class);
                 intent.putExtra("ID_ESTUDIANTE", dataModel.getId());
                 mContext.startActivity(intent);

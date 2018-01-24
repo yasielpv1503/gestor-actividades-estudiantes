@@ -7,17 +7,18 @@ tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.Ma
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical"
+    android:background="#FFFFFF"
 >
 
-<ImageView
-    android:id="@+id/imageView1"
-    android:layout_width="match_parent"
-    android:layout_height="250dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:src="@mipmap/control" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/control" />
 
     <LinearLayout
          android:layout_width="fill_parent"
@@ -43,12 +44,7 @@ android:orientation="vertical"
             android:layout_height="80dp"
             android:background="@mipmap/checklist"
             />
-        <Button
-            android:id="@+id/btnEstadisticas"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@mipmap/sumary"
-            />
+
 
         </LinearLayout>
 

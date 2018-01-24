@@ -14,7 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginTop="25dp"
-        android:text="REGISTRAR ESTUDIANTE"/>
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="REGISTRAR ACTIVIDAD"/>
 
 
     <EditText
@@ -22,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+
         android:hint="@string/fld_Descripcion" />
 
      <LinearLayout
@@ -40,9 +44,12 @@
              android:layout_alignParentStart="true" />
 
          <Button
+             android:textColor="#FFF"
+             android:background="@color/colorPrimary"
+
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="SELECT DATE"
+             android:text="FECHA"
              android:id="@+id/btn_date"
              android:layout_alignBottom="@+id/in_date"
              android:layout_toRightOf="@+id/in_date"
@@ -57,6 +64,9 @@
         android:gravity="right"
         >
         <Button
+            android:textColor="#FFF"
+            android:background="@color/colorPrimary"
+            android:layout_marginRight="10dp"
 
             android:id="@+id/btnCrearAct"
             android:layout_width="wrap_content"
@@ -66,6 +76,9 @@
 
 
         <Button
+            android:textColor="#FFF"
+            android:background="@color/colorPrimary"
+
             android:id="@+id/atrasBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

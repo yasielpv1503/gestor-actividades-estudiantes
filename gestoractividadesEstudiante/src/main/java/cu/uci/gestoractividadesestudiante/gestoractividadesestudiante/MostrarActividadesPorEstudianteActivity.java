@@ -39,8 +39,12 @@ public class MostrarActividadesPorEstudianteActivity extends AppCompatActivity {
                 this.estudiante =  list.get(i);
             }
         }
+
+        TextView estId = (TextView)findViewById(R.id.id_estudiante);
+        estId.setText(this.estudiante.getId());
+
         textNameEstudiante = (TextView)findViewById(R.id.name_estudiante);
-        textNameEstudiante.setText("Asistencia  a las actividades de: "+this.estudiante.getNombre());
+        textNameEstudiante.setText("ASISTENCIA DE: "+this.estudiante.getNombre());
         loadList();
 
 
@@ -75,13 +79,25 @@ public class MostrarActividadesPorEstudianteActivity extends AppCompatActivity {
 
     public void btnAtras(){
         btnAtras = (Button) findViewById(R.id.btnAtras);
-        Estudiante e=this.estudiante;
+
         btnAtras.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), ListarEstudianteActivity.class);
-                intent.putExtra("groupSelected",  "");
+                Estudiante_DBFactory est= new Estudiante_DBFactory(getBaseContext());
+                Estudiante estudiante=null;
+                List<Estudiante> list =  est.getAll();
+                TextView estId = (TextView)findViewById(R.id.id_estudiante);
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).getId().equals(estId.getText())){
+                        estudiante =  list.get(i);
+                    }
+                }
+                if(estudiante!=null)
+                    intent.putExtra("groupSelected",  estudiante.getGrupo());
+                else
+                    intent.putExtra("groupSelected", "");
                 startActivity(intent);
             }
         });

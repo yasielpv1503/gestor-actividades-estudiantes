@@ -4,9 +4,9 @@
     <string name="btn_asistencia">Pasar asistencia</string>
     <string name="btn_listar_est">Gestionar estudiante</string>
     <string name="btn_crear_est">Registrar Estudiante</string>
-    <string name="lbl_listado_est">Listado de Estudiante</string>
-    <string name="lbl_listado_act">Listado de Actividades</string>
-    <string name="lbl_select_act">Seleccione un grupo y una actividad</string>
+    <string name="lbl_listado_est">LISTADO DE ESTUDIANTES</string>
+    <string name="lbl_listado_act">LISTADO DE ACTIVIDADES</string>
+    <string name="lbl_select_act">PASAR ASISTENCIA</string>
     <string name="select_lbl_grupo">Seleccione el grupo</string>
     <string name="btn_listar_act">Gestionar actividad</string>
     <string name="fld_Descripcion">Descripcion</string>

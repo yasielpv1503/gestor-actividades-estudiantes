@@ -14,6 +14,9 @@ tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.Cr
     android:layout_width="match_parent"
     android:layout_height="20dp"
     android:layout_marginTop="25dp"
+    android:textColor="@color/colorPrimary"
+    android:textSize="16sp"
+    android:textStyle="bold"
     android:text="REGISTRAR ESTUDIANTE"/>
 <EditText
     android:id="@+id/user_est"
@@ -40,7 +43,7 @@ tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.Cr
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:layout_gravity="center_horizontal"
+    android:gravity="right"
     >
     <Button
 
@@ -48,6 +51,10 @@ tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.Cr
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar"
+        android:layout_marginRight="10dp"
+
+        android:textColor="#FFF"
+        android:background="@color/colorPrimary"
         />
     <Button
 
@@ -55,12 +62,19 @@ tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.Cr
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar y Continuar"
+        android:textColor="#FFF"
+        android:background="@color/colorPrimary"
+        android:layout_marginRight="10dp"
+
         />
 
     <Button
         android:id="@+id/atrasBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFF"
+        android:background="@color/colorPrimary"
+
         android:text="Atras"
         />
 </LinearLayout>

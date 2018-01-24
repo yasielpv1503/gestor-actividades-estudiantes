@@ -25,16 +25,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:id="@+id/name_estudiante"
             />
-
-        <ProgressBar
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="50dp"
-            android:id="@+id/progress"
+            android:id="@+id/id_estudiante"
+            android:visibility="invisible"
             />
+
+
         <Button
             android:id="@+id/btnAtras"
             android:layout_width="40dp"
