@@ -19,7 +19,7 @@ public class Asistencia_DBFactory extends SQLiteOpenHelper {
     public static final String ASISTENCIA_ID = "_id";
     public static final String ASISTENCIA_ID_ESTUDIANTE = "id_estudiante";
     public static final String ASISTENCIA_ID_ACTIVIDAD = "id_actividad";
-    public static final String ASISTENCIA_PRESENTE= "presente";
+    public static final String ASISTENCIA_PRESENTE = "presente";
 
     static final String DB_NAME = "GESTOR_ACTIVIDADES.DB";
     static final int DB_VERSION = 1;
@@ -56,17 +56,15 @@ public class Asistencia_DBFactory extends SQLiteOpenHelper {
         return id;
     }
 
-    public boolean delete(String id)
-    {   SQLiteDatabase db = this.getWritableDatabase();
+    public boolean delete(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, ASISTENCIA_ID + "=" + id, null) > 0;
     }
 
-    public boolean isPresent(String idEst,String idAct) {
+    public void updateOrCreate(String idEst, String idAct, boolean presente) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        if (sqLiteDatabase == null) {
-            return false;
-        }
-        Cursor cur = sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+ASISTENCIA_ID_ACTIVIDAD+" = '"+idAct+"' AND "+ASISTENCIA_ID_ESTUDIANTE+" = '"+idEst+"' ", null);
+
+        Cursor cur = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + ASISTENCIA_ID_ACTIVIDAD + " = '" + idAct + "' AND " + ASISTENCIA_ID_ESTUDIANTE + " = '" + idEst + "' ", null);
 
         LinkedList<Asistencia> list = new LinkedList<>();
         while (cur.moveToNext()) {
@@ -74,10 +72,39 @@ public class Asistencia_DBFactory extends SQLiteOpenHelper {
             list.add(obj);
         }
         cur.close();
-        sqLiteDatabase.close();
-        if(list.size()>0){
-         return list.get(0).isPresente();
+
+        if (list.size() > 0) {
+            String id = list.get(0).getId();
+            ContentValues cv = new ContentValues();
+            cv.put(ASISTENCIA_PRESENTE, presente); //These Fields should be your String values of actual column names
+            sqLiteDatabase.update(TABLE_NAME, cv, ASISTENCIA_ID + "=" + id, null);
+
+        } else {
+            Asistencia a = new Asistencia("", idEst, idAct, presente);
+            this.create(a);
         }
-        return false;
+        sqLiteDatabase.close();
+    }
+
+    public boolean isPresent(String idEst, String idAct) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        if (sqLiteDatabase == null) {
+            return false;
+        }
+        Cursor cur = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + ASISTENCIA_ID_ACTIVIDAD + " = '" + idAct + "' AND " + ASISTENCIA_ID_ESTUDIANTE + " = '" + idEst + "' ", null);
+
+        LinkedList<Asistencia> list = new LinkedList<>();
+        while (cur.moveToNext()) {
+            Asistencia obj = new Asistencia(cur.getString(0), cur.getString(1), cur.getString(2),(cur.getInt(3) > 0));
+            list.add(obj);
+        }
+        cur.close();
+        sqLiteDatabase.close();
+        if (list.size() > 0) {
+            return list.get(0).isPresente();
+        }else{
+            return false;
+        }
+
     }
 }

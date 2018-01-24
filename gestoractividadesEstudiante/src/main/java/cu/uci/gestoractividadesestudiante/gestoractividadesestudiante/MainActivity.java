@@ -10,12 +10,14 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnListarEstudiante;
     private Button btnListarActividad;
+    private Button btnPasarAsistencia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         eventListarEstudiante();
         eventListarActividad();
+        eventCrearAsistencia();
     }
 
 
@@ -36,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), ListarActividadActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    public void eventCrearAsistencia(){
+        btnPasarAsistencia = (Button) findViewById(R.id.btnPasarAsistencia);
+        btnPasarAsistencia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), CrearAsistenciaActivity.class);
                 startActivity(intent);
             }
         });

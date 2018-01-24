@@ -38,4 +38,9 @@ public class Actividad {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public String toString() {
+        return   this.nombre ;
+    }
 }
