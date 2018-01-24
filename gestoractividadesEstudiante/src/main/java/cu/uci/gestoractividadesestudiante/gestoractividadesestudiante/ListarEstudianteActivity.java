@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.activities.CustomAdapter;
+import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.activities.EstudianteAdapter;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.api_client.GrupoManager;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Estudiante;
 import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Estudiante_DBFactory;
@@ -23,19 +23,20 @@ import cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.entity.Est
 public class ListarEstudianteActivity extends AppCompatActivity {
     Spinner grupos;
     Button btnAddEstudiante;
+    Button btnAtras;
     ArrayList<Estudiante> dataModels;
     ListView listView;
-    private static CustomAdapter adapter;
+    private static EstudianteAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_estudiante);
         loadGrupos();
-        eventCreateEst();
-
+        btnAddEstudiante();
+        btnAtras();
     }
 
-    public void eventCreateEst(){
+    public void btnAddEstudiante(){
         btnAddEstudiante = (Button) findViewById(R.id.btnCrear);
         btnAddEstudiante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,18 +46,29 @@ public class ListarEstudianteActivity extends AppCompatActivity {
             }
         });
     }
+    public void btnAtras(){
+        btnAtras = (Button) findViewById(R.id.btnAtras);
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 
     public void loadList(String grupo){
         listView=(ListView)findViewById(R.id.list);
         dataModels= new ArrayList<>();
         Estudiante_DBFactory est = new Estudiante_DBFactory(getBaseContext());
         List<Estudiante> estList =  est.getAllByGroup(grupo);
-        Toast.makeText(ListarEstudianteActivity.this,"Cant"+String.valueOf(estList.size()),Toast.LENGTH_SHORT).show();
+        Toast.makeText(ListarEstudianteActivity.this,"El grupo "+grupo+" tiene "+String.valueOf(estList.size()+" estudiantes."),Toast.LENGTH_SHORT).show();
 
         for (int i = 0; i < estList.size() ; i++)
             dataModels.add(estList.get(i));
 
-        adapter= new CustomAdapter(dataModels,ListarEstudianteActivity.this);
+        adapter= new EstudianteAdapter(dataModels,ListarEstudianteActivity.this);
 
         listView.setAdapter(adapter);
 

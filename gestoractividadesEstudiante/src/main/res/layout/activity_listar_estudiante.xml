@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -37,14 +37,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
+
         <Button
             android:id="@+id/btnCrear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="@string/btn_crear_est"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@mipmap/add"
+           />
+        <Button
+            android:id="@+id/btnAtras"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@mipmap/atras"
+
             />
+
     </LinearLayout>
+
+
 
 
 

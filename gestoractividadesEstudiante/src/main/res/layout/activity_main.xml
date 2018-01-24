@@ -19,51 +19,41 @@ android:orientation="vertical"
     app:layout_constraintTop_toTopOf="parent"
     android:src="@mipmap/control" />
 
-
+    <LinearLayout
+         android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
     <Button
         android:id="@+id/btnEstudiante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:drawableLeft="@mipmap/list"
-        android:text="@string/btn_listar_est"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@mipmap/estudiante"
         />
-    <Button
-        android:id="@+id/btnActividad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:drawableLeft="@mipmap/list"
-        android:text="@string/btn_listar_act"
-        />
-    <Button
-        android:id="@+id/btnPasarAsistencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:drawableLeft="@mipmap/check"
-        android:text="@string/btn_asistencia"
-        />
-    <Button
-        android:id="@+id/btnEstadisticas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:drawableLeft="@mipmap/graf"
-        android:text="@string/btn_resumen"
-        />
+        <Button
+            android:id="@+id/btnActividad"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@mipmap/actividad"
+            />
+        <Button
+            android:id="@+id/btnPasarAsistencia"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@mipmap/checklist"
+            />
+        <Button
+            android:id="@+id/btnEstadisticas"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@mipmap/sumary"
+            />
+
+        </LinearLayout>
+
+
+
 
 
 </LinearLayout>
