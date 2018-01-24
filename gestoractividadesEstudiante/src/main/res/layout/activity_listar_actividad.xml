@@ -9,13 +9,13 @@
     android:paddingLeft="20dp"
 
     android:paddingRight="20dp"
-    tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.ListarEstudianteActivity">
+    tools:context="cu.uci.gestoractividadesestudiante.gestoractividadesestudiante.ListarActividadActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginTop="25dp"
-        android:text="@string/lbl_listado_est"/>
+        android:text="@string/lbl_listado_act"/>
 
 
 
@@ -26,24 +26,14 @@
         android:orientation="horizontal"
         android:gravity="right"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/select_lbl_grupo"
-            />
 
-        <Spinner
-            android:id="@+id/group_est"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
 
         <Button
             android:id="@+id/btnCrear"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@mipmap/add"
-           />
+            />
         <Button
             android:id="@+id/btnAtras"
             android:layout_width="40dp"
@@ -53,12 +43,6 @@
             />
 
     </LinearLayout>
-
-
-
-
-
-
     <ListView
         android:id="@+id/list"
         android:layout_width="wrap_content"
