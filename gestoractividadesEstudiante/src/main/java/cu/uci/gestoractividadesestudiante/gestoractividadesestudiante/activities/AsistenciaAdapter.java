@@ -103,7 +103,6 @@ public class AsistenciaAdapter extends ArrayAdapter<Estudiante> implements View.
 
         Asistencia_DBFactory asFact = new Asistencia_DBFactory(mContext);
         boolean isPresente = asFact.isPresent(dataModel.getId(),((Actividad)this.txtActividad.getSelectedItem()).getId());
-        Toast.makeText(mContext,"IS: "+isPresente+" E: "+dataModel.getId()+" A: "+((Actividad)this.txtActividad.getSelectedItem()).getId(),Toast.LENGTH_SHORT).show();
         viewHolder.presente.setChecked(isPresente);
         return convertView;
     }
